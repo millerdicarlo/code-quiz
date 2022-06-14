@@ -233,7 +233,33 @@ function storeHighScores(event) {
     showHighScores();
 }
 
+// Show high scores fuction
+var i = 0;
+function showHighScores() {
 
+    startDiv.style.display = "none";
+    timer.style.display = "none";
+    questionDiv.style.display = "none";
+    timesUp.style.display = "none";
+    summary.style.display = "none";
+    highScoreSection.style.display = "block";
+
+    var savedHighScores = localStorage.getItem("high scores");
+
+    // check if there are any already in local storage
+    if (savedHighScores === null) {
+        return;
+    }
+    console.log(savedHighScores);
+
+    var storedHighScores = JSON.parse(savedHighScores);
+
+    for (; i < storedHighScores.length; i++) {
+        var eachNewHighScore = document.createElement("p");
+        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score;
+        listOfHighScores.appendChild(eachNewHighScore);
+    }
+}
 
 /* EVENT LISTENERS */
 startQuizBtn.addEventListener("click", newQuiz);
