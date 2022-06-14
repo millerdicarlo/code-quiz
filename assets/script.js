@@ -148,12 +148,12 @@ function checkAnswer(answer) {
     answerCheck.style.display = "block";
 
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
-        // correct answer, add 1 score to final score
+        // correct answer: add 1 point to score
         correctAns++;
         // console.log(correctAns);
         answerCheck.textContent = "Correct!";
     } else {
-        // wrong answer, deduct 10 second from timer
+        // wrong answer: deduct 10 seconds
         totalTime -= 10;
         timeLeft.textContent = totalTime;
         answerCheck.textContent = "Wrong! The correct answer is: " + questions[questionIndex].answer;
@@ -164,7 +164,15 @@ function checkAnswer(answer) {
     if (questionIndex < questions.length) {
         nextQuestion();
     } else {
-        // if no more question, run game over function
+        // if no more question are present, run gameOver function
         gameOver();
     }
 }
+
+function chooseA() { checkAnswer(0); }
+
+function chooseB() { checkAnswer(1); }
+
+function chooseC() { checkAnswer(2); }
+
+function chooseD() { checkAnswer(3); }
