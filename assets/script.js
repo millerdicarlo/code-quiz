@@ -139,3 +139,32 @@ function nextQuestion() {
     choiceC.textContent = questions[questionIndex].choices[2];
     choiceD.textContent = questions[questionIndex].choices[3];
 }
+
+// correct or incorrect answers
+function checkAnswer(answer) {
+
+    var lineBreak = document.getElementById("lineBreak");
+    lineBreak.style.display = "block";
+    answerCheck.style.display = "block";
+
+    if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
+        // correct answer, add 1 score to final score
+        correctAns++;
+        // console.log(correctAns);
+        answerCheck.textContent = "Correct!";
+    } else {
+        // wrong answer, deduct 10 second from timer
+        totalTime -= 10;
+        timeLeft.textContent = totalTime;
+        answerCheck.textContent = "Wrong! The correct answer is: " + questions[questionIndex].answer;
+    }
+
+    questionIndex++;
+    // repeat with the rest of questions 
+    if (questionIndex < questions.length) {
+        nextQuestion();
+    } else {
+        // if no more question, run game over function
+        gameOver();
+    }
+}
