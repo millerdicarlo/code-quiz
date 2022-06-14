@@ -90,3 +90,9 @@ var goBackBtn = document.getElementById("goBackBtn");
 var clearHighScoreBtn = document.getElementById("clearHighScoreBtn"); 
 var viewHighScore = document.getElementById("viewHighScore");
 var listOfHighScores = document.getElementById("listOfHighScores");
+
+// other variables
+var correctAns = 0;
+var questionNum = 0;
+var scoreResult;
+var questionIndex = 0;
